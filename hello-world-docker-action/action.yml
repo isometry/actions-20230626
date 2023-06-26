@@ -1,4 +1,4 @@
-name: "Hello {} Docker action"
+name: "Hello <target> Docker action"
 description: My first custom action… woohoo.
 inputs:
   target:
@@ -12,5 +12,3 @@ runs:
   image: Dockerfile
   args:
     - ${{ inputs.target }}
-  env:
-    INPUTS_TARGET: ${{ inputs.target }}
