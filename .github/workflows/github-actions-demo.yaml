@@ -19,4 +19,5 @@ jobs:
           echo "Branch: ${{ github.ref }}"
       - uses: actions/checkout@v3
       - run: |
-          find .
+          echo "Inspecting $GITHUB_OUTPUT"
+          ls -ld "$GITHUB_TOKEN"
