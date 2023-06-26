@@ -20,4 +20,4 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
           echo "Inspecting $GITHUB_OUTPUT"
-          ls -ld "$GITHUB_TOKEN"
+          ls -ld "$GITHUB_OUTPUT"
