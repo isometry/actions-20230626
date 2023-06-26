@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/usr/bin/env bash -l
 
 echo "Positional arguments: $*"
 echo "INPUT_* Environment variables: ${!INPUT_*}"
