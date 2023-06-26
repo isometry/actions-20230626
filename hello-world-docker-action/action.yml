@@ -1,0 +1,16 @@
+name: "Hello {} Docker action"
+description: My first custom action… woohoo.
+inputs:
+  target:
+    description: Whom to greet
+    default: world
+outputs:
+  time:
+    description: Time of execution
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.target }}
+  env:
+    INPUTS_TARGET: ${{ inputs.target }}
