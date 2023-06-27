@@ -9,6 +9,11 @@ on:
   schedule:
     - cron: "15 6 * * 0"
   workflow_dispatch:
+    inputs:
+      environment:
+        description: Target Environment
+        type: environment
+        required: true
 
 jobs:
   Build:
@@ -21,3 +26,32 @@ jobs:
       - run: |
           echo "Inspecting $GITHUB_OUTPUT"
           ls -ld "$GITHUB_OUTPUT"
+  Test:
+    if: github.event_name == 'workflow_dispatch'
+    needs: Build
+    runs-on: ubuntu-latest
+    environment: Test
+    steps:
+      - run: echo "Testing in Test environment..."
+  Load-Test:
+    if: github.event_name == 'workflow_dispatch'
+    needs: Build
+    runs-on: ubuntu-latest
+    environment: Load-Test
+    steps:
+      - run: |
+          echo "Testing in Load-Test environment..."
+          sleep 15
+  Production:
+    if: inputs.environment == 'Production'
+    needs: [Test, Load-Test]
+    runs-on: ubuntu-latest
+    environment:
+      name: Production
+      url: https://writeabout.net
+    steps:
+      - run: |
+          for i in {1..5}; do
+            echo "Step ${i}: deploying…"
+            sleep 10
+          done
