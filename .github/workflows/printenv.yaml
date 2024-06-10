@@ -1,0 +1,11 @@
+name: printenv
+
+on:
+  workflow_dispatch:
+
+jobs:
+  printenv:
+    runs-on: ubuntu-latest
+    environment: Test
+    steps:
+      - run: printenv
