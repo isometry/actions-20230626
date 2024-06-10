@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
 env:
-  ENV_SECRET_TEST: ${{ secret.ENV_SECRET_TEST }}
+  ENV_SECRET_REPO: ${{ secrets.ENV_SECRET_REPO }}
+  ENV_VARIABLE_REPO: ${{ variables.ENV_SECRET_REPO }}
 
 jobs:
   printenv:
@@ -13,7 +14,5 @@ jobs:
     env:
       ENV_SECRET_TEST: ${{ secrets.ENV_SECRET_TEST }}
       ENV_VARIABLE_TEST: ${{ variables.ENV_VARIABLE_TEST }}
-      ENV_SECRET_REPO: ${{ secrets.ENV_SECRET_REPO }}
-      ENV_VARIABLE_REPO: ${{ variables.ENV_SECRET_REPO }}
     steps:
       - run: printenv
