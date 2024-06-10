@@ -3,9 +3,17 @@ name: printenv
 on:
   workflow_dispatch:
 
+env:
+  ENV_SECRET_TEST: ${{ secret.ENV_SECRET_TEST }}
+
 jobs:
   printenv:
     runs-on: ubuntu-latest
     environment: Test
+    env:
+      ENV_SECRET_TEST: ${{ secret.ENV_SECRET_TEST }}
+      ENV_VARIABLE_TEST: ${{ variable.ENV_VARIABLE_TEST }}
+      ENV_SECRET_REPO: ${{ secret.ENV_SECRET_REPO }}
+      ENV_VARIABLE_REPO: ${{ variable.ENV_SECRET_REPO }}
     steps:
       - run: printenv
