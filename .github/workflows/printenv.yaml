@@ -5,7 +5,7 @@ on:
 
 env:
   ENV_SECRET_REPO: ${{ secrets.ENV_SECRET_REPO }}
-  ENV_VARIABLE_REPO: ${{ variables.ENV_SECRET_REPO }}
+  ENV_VARIABLE_REPO: ${{ vars.ENV_SECRET_REPO }}
 
 jobs:
   printenv:
@@ -13,6 +13,6 @@ jobs:
     environment: Test
     env:
       ENV_SECRET_TEST: ${{ secrets.ENV_SECRET_TEST }}
-      ENV_VARIABLE_TEST: ${{ variables.ENV_VARIABLE_TEST }}
+      ENV_VARIABLE_TEST: ${{ vars.ENV_VARIABLE_TEST }}
     steps:
       - run: printenv
